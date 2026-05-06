@@ -14,6 +14,16 @@ The dataset is provided by Zindi Africa. To respect the competition rules, the d
 
 ---
 
+## 📈 Interactive Dashboard
+An interactive dashboard was created using Tableau to explore key insights visually.
+
+🔗 **View Dashboard:**  
+https://public.tableau.com/views/FinancialInclusionEA/Dashboard2?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link  
+
+💡 *For the best experience, open the dashboard in **fullscreen mode**.*
+
+---
+
 ## 🔄 Methodology (CRISP-DM)
 
 - 🧠 **Business Understanding:**  
