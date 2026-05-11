@@ -18,7 +18,7 @@ The dataset is provided by Zindi Africa. To respect the competition rules, the d
 An interactive web application was built using Streamlit to allow users to make real-time predictions.
 
 🚀 **Try the App:**  
-https://financial-inclusion-in-east-africa-xju8efl3t6p2p4kn8c6d6a.streamlit.app/  
+[Live Demo](https://financeinclusionea.streamlit.app/)  
 
 💡 *Input user details and instantly see the predicted likelihood of having a bank account.*
 
