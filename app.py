@@ -181,7 +181,8 @@ st.markdown(
         color: var(--text) !important;
         border-color: var(--border) !important;
     }}
-    .stNumberInput button svg {{
+    .stNumberInput button[data-testid="stNumberInputStepUp"] svg,
+    .stNumberInput button[data-testid="stNumberInputStepDown"] svg {{
         fill: var(--text) !important;
         color: var(--text) !important;
     }}
@@ -522,12 +523,18 @@ if predict_clicked:
         }
         edu_val = edu_map[education]
 
-        input_data = np.zeros((1, 31))
-        scaled_age = (age - 38.8) / 16.5
-        input_data[0, 1] = cell_val
-        input_data[0, 3] = scaled_age
-        input_data[0, 4] = gender_val
-        input_data[0, 5] = edu_val
+        # Build a DataFrame with the SAME column names and order the model
+        # was trained on (see notebook "App Model" cell). The deployed model
+        # is an unscaled Random Forest, so raw values are passed directly.
+        input_data = pd.DataFrame(
+            [[cell_val, age, gender_val, edu_val]],
+            columns=[
+                "cellphone_access",
+                "age_of_respondent",
+                "gender_of_respondent",
+                "education_level",
+            ],
+        )
 
         try:
             prediction = model.predict(input_data)[0]
@@ -613,10 +620,10 @@ if predict_clicked:
         except ValueError as ve:
             st.error(f"Prediction Error: {ve}")
             st.info(
-                "Note: The loaded model expects a different number of "
-                "features. If the model was trained on the full 32-feature "
-                "dataset, you will need to provide all 32 inputs or re-train "
-                "the model on the 4 features used in this app."
+                "Note: The loaded model expects different features. Ensure "
+                "'inclusion_model.pkl' was trained on these 4 columns "
+                "(cellphone_access, age_of_respondent, gender_of_respondent, "
+                "education_level) as described in the notebook's App Model cell."
             )
 
 # ---------------- Footer ----------------
